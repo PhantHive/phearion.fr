@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  // Remove basePath if you're deploying to a custom domain
+  basePath: '',
 };
 
 export default nextConfig;
