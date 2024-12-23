@@ -19,16 +19,20 @@ jobs:
           node-version: '21'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm ci
+          npm cache clean --force
 
       - name: Build
-        run: npm run build
+        run: |
+          rm -rf .next
+          rm -rf out
+          npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: out
-          token: ${{ secrets.GHPAGES_TOKEN }}
-          # Add this to ensure README isn't used as index
           clean: true
+          token: ${{ secrets.GHPAGES_TOKEN }}
