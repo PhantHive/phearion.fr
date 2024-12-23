@@ -24,9 +24,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: List directories
+        run: ls -la
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # The branch the action should deploy to.
-          folder: dist     # Changed from dist to out for Next.js
+          branch: gh-pages
+          folder: out    # Next.js now outputs to 'out' by default when using output: 'export'
           token: ${{ secrets.GHPAGES_TOKEN }}
