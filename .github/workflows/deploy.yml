@@ -24,12 +24,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: List directories
-        run: ls -la
-
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: out    # Next.js now outputs to 'out' by default when using output: 'export'
+          folder: out
           token: ${{ secrets.GHPAGES_TOKEN }}
+          # Add this to ensure README isn't used as index
+          clean: true
