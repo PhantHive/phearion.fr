@@ -8,14 +8,17 @@ export function GoogleAnalytics() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+
+    const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
 
     // Ensure dataLayer exists
     window.dataLayer = window.dataLayer || [];
 
     // Define gtag function if not already defined
     if (!window.gtag) {
-      window.gtag = (...args) => {
+      window.gtag = (...args: any[]) => {
         window.dataLayer.push(args);
       };
     }
@@ -39,4 +42,18 @@ export function GoogleAnalytics() {
   }, [pathname, searchParams]);
 
   return null;
+}
+
+// Track specific events
+export function trackEvent(
+  eventName: string,
+  eventParams?: Record<string, string | number | boolean>
+) {
+  if (typeof window !== 'undefined' && window.gtag) {
+    if (eventParams) {
+      window.gtag('event', eventName, eventParams);
+    } else {
+      window.gtag('event', eventName);
+    }
+  }
 }

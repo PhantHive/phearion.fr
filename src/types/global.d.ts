@@ -15,13 +15,13 @@ type GTagMethod =
 
 interface Window {
   dataLayer: unknown[];
-  gtag: (...args: GTagMethod) => void;
+  gtag: (...args: any[]) => void;
 }
 
 declare global {
   interface Window {
     dataLayer: unknown[];
-    gtag: (...args: GTagMethod) => void;
+    gtag: (...args: any[]) => void;
   }
 }
 
