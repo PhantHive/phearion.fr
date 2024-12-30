@@ -1,13 +1,10 @@
 "use client";
 
 import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
 function SearchComponent() {
-  const searchParams = useSearchParams();
-  // Component logic using searchParams
   return <div>Search Results</div>;
 }
 
