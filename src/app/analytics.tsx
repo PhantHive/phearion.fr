@@ -11,7 +11,7 @@ export function GoogleAnalytics() {
     // Only run on client side
     if (typeof window === 'undefined') return;
 
-    const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
+    const url = pathname + (searchParams && searchParams.toString() ? `?${searchParams.toString()}` : '');
 
     // Ensure dataLayer exists
     window.dataLayer = window.dataLayer || [];
