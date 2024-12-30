@@ -10,13 +10,13 @@ export function GoogleAnalytics() {
   useEffect(() => {
     const url = pathname + searchParams.toString();
 
-    // Ensure gtag function exists
+    // Ensure dataLayer exists
     window.dataLayer = window.dataLayer || [];
 
     // Define gtag function if not already defined
     if (!window.gtag) {
-      window.gtag = function() {
-        window.dataLayer.push(arguments);
+      window.gtag = (...args) => {
+        window.dataLayer.push(args);
       };
     }
 
