@@ -40,17 +40,3 @@ export function GoogleAnalytics() {
 
   return null;
 }
-
-// Optional: Track specific events with type-safe implementation
-export function trackEvent(
-  eventName: string,
-  eventParams?: Record<string, any>
-) {
-  if (typeof window !== 'undefined' && window.gtag) {
-    if (eventParams) {
-      window.gtag('event', eventName, eventParams);
-    } else {
-      window.gtag('event', eventName);
-    }
-  }
-}
