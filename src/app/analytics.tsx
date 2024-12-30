@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+type GTagInput = [...any[]];
+
 export function GoogleAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -18,7 +20,7 @@ export function GoogleAnalytics() {
 
     // Define gtag function if not already defined
     if (!window.gtag) {
-      window.gtag = (...args: any[]) => {
+      window.gtag = (...args: GTagInput) => {
         window.dataLayer.push(args);
       };
     }
@@ -42,18 +44,4 @@ export function GoogleAnalytics() {
   }, [pathname, searchParams]);
 
   return null;
-}
-
-// Track specific events
-export function trackEvent(
-  eventName: string,
-  eventParams?: Record<string, string | number | boolean>
-) {
-  if (typeof window !== 'undefined' && window.gtag) {
-    if (eventParams) {
-      window.gtag('event', eventName, eventParams);
-    } else {
-      window.gtag('event', eventName);
-    }
-  }
 }

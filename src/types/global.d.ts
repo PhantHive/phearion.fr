@@ -13,15 +13,17 @@ type GTagMethod =
   | ['config', string, GTagConfigParams?]
   | ['event', string, GTagEventParams?];
 
+type GTagInput = [...any[]];
+
 interface Window {
   dataLayer: unknown[];
-  gtag: (...args: any[]) => void;
+  gtag: (...args: GTagInput) => void;
 }
 
 declare global {
   interface Window {
     dataLayer: unknown[];
-    gtag: (...args: any[]) => void;
+    gtag: (...args: GTagInput) => void;
   }
 }
 
