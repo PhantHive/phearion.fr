@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Suspense } from 'react';
 
-function NotFoundContent() {
+export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-white to-purple-100 p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 text-center max-w-md w-full border-4 border-pink-200">
@@ -29,13 +28,5 @@ function NotFoundContent() {
         </Link>
       </div>
     </div>
-  );
-}
-
-export default function NotFound() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NotFoundContent />
-    </Suspense>
   );
 }
