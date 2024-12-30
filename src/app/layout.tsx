@@ -3,7 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Head from 'next/head';
+import { GoogleAnalytics } from './analytics';
+import CookieNotice from '@/components/CookieNotice';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,14 +47,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
 };
-
-import CookieNotice from '@/components/CookieNotice';
 
 export default function RootLayout({
   children,
@@ -62,22 +64,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5E8HN8117"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-E5E8HN8117');
-            `,
-          }}
-        />
-      </Head>
       <body className={`${inter.className} antialiased`}>
+        <GoogleAnalytics />
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-amber-50 via-white to-rose-50">
           {/* Warm geometric background pattern */}
           <div className="fixed inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
