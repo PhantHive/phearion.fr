@@ -1,6 +1,11 @@
 import { Suspense } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+
+function SearchComponent() {
+  const searchParams = useSearchParams();
+  // Component logic using searchParams
+  return <div>Search Results</div>;
+}
 
 export default function NotFound() {
   return (
@@ -28,6 +33,7 @@ export default function NotFound() {
           >
             Return to Safety
           </Link>
+          <SearchComponent />
         </div>
       </div>
     </Suspense>
