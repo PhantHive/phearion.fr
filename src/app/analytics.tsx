@@ -1,17 +1,17 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 export function GoogleAnalytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     // Only run on client side
     if (typeof window === 'undefined') return;
 
-    const url = pathname + (searchParams && searchParams.toString() ? `?${searchParams.toString()}` : '');
+    const searchParams = window.location.search;
+    const url = pathname + (searchParams ? searchParams : '');
 
     // Ensure dataLayer exists
     window.dataLayer = window.dataLayer || [];
@@ -40,7 +40,7 @@ export function GoogleAnalytics() {
     return () => {
       document.head.removeChild(script);
     };
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }

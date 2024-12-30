@@ -1,3 +1,4 @@
+// src/pages/not-found.tsx
 "use client";
 
 import { Suspense } from 'react';
@@ -29,7 +30,7 @@ export default function NotFound() {
             The page you&apos;re looking for seems to have teleported to another dimension. Let&apos;s bring you back home!
           </p>
           <Link
-            href="/"
+            href="/public"
             className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:scale-105 transition-transform shadow-md"
           >
             Return to Safety
