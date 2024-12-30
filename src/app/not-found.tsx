@@ -19,7 +19,7 @@ function NotFoundContent() {
           Oops! Lost in Space
         </h1>
         <p className="text-lg text-gray-700 mb-6">
-          The page you're looking for seems to have teleported to another dimension. Let's bring you back home!
+          The page you&apos;re looking for seems to have teleported to another dimension. Let&apos;s bring you back home!
         </p>
         <Link
           href="/"
