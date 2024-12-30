@@ -3,8 +3,6 @@
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-type GTagInput = [...any[]];
-
 export function GoogleAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -20,7 +18,8 @@ export function GoogleAnalytics() {
 
     // Define gtag function if not already defined
     if (!window.gtag) {
-      window.gtag = (...args: GTagInput) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      window.gtag = (...args: any[]) => {
         window.dataLayer.push(args);
       };
     }
